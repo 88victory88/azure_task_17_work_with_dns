@@ -17,7 +17,7 @@ $webVmName = "webserver"
 $jumpboxVmName = "jumpbox"
 $dnsLabel = "matetask" + (Get-Random -Count 1)
 
-$privateDnsZoneName = "or.nottodo"
+$privateDnsZoneName = "todo.or.nottodo"
 
 
 Write-Host "Creating a resource group $resourceGroupName ..."
@@ -88,7 +88,7 @@ $privateDnsZone = New-AzPrivateDnsZone -ResourceGroupName $resourceGroupName -Na
 # Link the private DNS zone to the virtual network
 Write-Host "Linking private DNS zone to the virtual network ..."
 New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $resourceGroupName -ZoneName $privateDnsZoneName `
-  -Name "todo-dns-link" -VirtualNetworkId $virtualNetwork.Id
+  -Name "todo-dns-link" -VirtualNetworkId $virtualNetwork.Id -EnableAutoRegistration $true
 
 # Create a CNAME record for the webserver in the private DNS zone
 New-AzPrivateDnsRecordSet -Name "todo" -ZoneName $privateDnsZoneName -ResourceGroupName $resourceGroupName `
