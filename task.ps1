@@ -97,7 +97,7 @@ New-AzPrivateDnsVirtualNetworkLink `
   -ZoneName $privateDnsZoneName `
   -Name "todo-dns-link" `
   -VirtualNetwork $virtualNetwork `
-  -EnableRegistration:$true
+  -EnableAutoRegistration:$true
 
 # Write-Host "Creating an A DNS record ..."
 # $Records = @()
